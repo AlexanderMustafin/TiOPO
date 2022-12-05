@@ -113,7 +113,7 @@ namespace UnitTests
         [DataRow(5)]
         [DataRow(99)]
         [DataTestMethod]
-        public void Get_Default_State_Of_TV_Then_TV_Is_TurnedOn_ChannelIsFirst(int Channel)
+        public void Get_Channel_With_Turn_On_Tv(int Channel)
         {
             tv = new TvSet.TvSet();
             tv.TurnOn();
