@@ -79,35 +79,31 @@ namespace UnitTests
 
             Assert.AreEqual(result, Channel);
         }
-        [TestMethod]
-        public void Selecting_The_0_Channell_With_Tv_On()
+        [DataRow(0)]
+        [DataRow(100)]
+        [DataRow(1000)]
+        [DataTestMethod]
+        public void Selecting_The_Incorrect_Channell_With_Tv_On(int Channel)
         {
             tv = new TvSet.TvSet();
             tv.TurnOn();
             bool CanChoose = false;
-            bool result = tv.SelectChannel(0);
-
-            Assert.AreEqual(CanChoose, result);
-        }
-        [TestMethod]
-        public void Selecting_The_100_Channel_Channel_With_Tv_On()
-        {
-            tv = new TvSet.TvSet();
-            tv.TurnOn();
-            bool CanChoose = false;
-            bool result = tv.SelectChannel(100);
+            bool result = tv.SelectChannel(Channel);
 
             Assert.AreEqual(CanChoose, result);
         }
 
-        [TestMethod]                        //Тесты с методом GetChannel();
-        public void Get_Channel_With_Turn_Off_Tv()//Параметризирвоать
+        [DataRow(1)]                            //Тесты с методом GetChannel();
+        [DataRow(5)]
+        [DataRow(99)]
+        public void Get_Channel_With_Turn_Off_Tv(int Channel)//Параметризирвоать
         {
             tv = new TvSet.TvSet();
-            int Channel = 0;
+            tv.SelectChannel(Channel);
             int result = tv.GetChannel();
+            int CorrectChannel = 0;
 
-            Assert.AreEqual(result, Channel);
+            Assert.AreEqual(CorrectChannel, result);
         }
         [DataRow(1)]
         [DataRow(5)]
