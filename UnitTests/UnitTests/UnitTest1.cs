@@ -51,10 +51,10 @@ namespace UnitTests
             Assert.AreEqual(isOn, result);
         }
 
-        [TestMethod]                        //Тесты с методом SelectChannel();
-        [DataRow(1)]
+        [DataRow(1)]                        //Тесты с методом SelectChannel();
         [DataRow(5)]
         [DataRow(99)]
+        [DataTestMethod]
         public void ChannelSelection_With_Tv_Off(int Channel) //Параметризировать тест 
         {
             tv = new TvSet.TvSet();
@@ -65,10 +65,10 @@ namespace UnitTests
 
             Assert.AreEqual(result, Channel);
         }
-        [TestMethod]
         [DataRow(1)]
         [DataRow(5)]
         [DataRow(99)]
+        [DataTestMethod]
         public void ChannelSelection_With_Tv_On(int Channel)
         {
             tv = new TvSet.TvSet();
@@ -109,10 +109,10 @@ namespace UnitTests
 
             Assert.AreEqual(result, Channel);
         }
-        [TestMethod]
         [DataRow(1)]
         [DataRow(5)]
         [DataRow(99)]
+        [DataTestMethod]
         public void Get_Default_State_Of_TV_Then_TV_Is_TurnedOn_ChannelIsFirst(int Channel)
         {
             tv = new TvSet.TvSet();
@@ -121,6 +121,17 @@ namespace UnitTests
             int result = tv.GetChannel();
 
             Assert.AreEqual(Channel, result);
+        }
+        [TestMethod]
+        public void GetDefaultStateOfTVThenTVIsTurnedOn_ChannelIsFirst()
+        {
+            tv = new TvSet.TvSet();
+            int FirstChannel = 1;
+
+            tv.TurnOn();
+            int result = tv.GetChannel();
+
+            Assert.AreEqual(result, FirstChannel);
         }
 
         [TestMethod]                        //Тесты с методом SelectPreviousChannel();
